@@ -309,7 +309,7 @@ def fracfact_by_res(n, res):
     """
     # Determine minimum required number of base-factors.
     min_fac = next(dropwhile(lambda n_: _n_fac_at_res(n_, res) < n,
-                             range(res - 1, n)), None)
+                             range(res - 1, n + 1)), None)
 
     if min_fac is None:
         raise ValueError('design not possible')
@@ -349,7 +349,7 @@ def _n_fac_at_res(n, res):
     """ Calculate number of possible factors for fractional factorial
     design with `n` base factors at resolution `res`.
     """
-    return sum(binom(n, r) for r in range(res - 1, n)) + n
+    return sum(binom(n, r) for r in range(res - 1, n + 1)) + n
 
 ################################################################################
 
